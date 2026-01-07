@@ -32,9 +32,10 @@ const App = () => {
               : `Title :${posts[0]?.title}`}
           </p>
 
-          <p className="body">
-            {loading ? "Loading body" : posts[0]?.body}
-          </p>
+         <p className="body">
+  {loading ? "Body :Loading Body" : `Body :${post.body}`}
+</p>
+
         </li>
       </ul>
     </div>
