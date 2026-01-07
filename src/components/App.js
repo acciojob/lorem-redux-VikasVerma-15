@@ -16,7 +16,6 @@ const App = () => {
 
   return (
     <div>
-      {/*  INTRO TEXT */}
       <h1>A short Naration of Lorem Ipsum</h1>
       <h4>
         Below Contains A title and Body gotten froma random API, Please take your
@@ -24,8 +23,10 @@ const App = () => {
       </h4>
 
       <ul>
-        {/* ALWAYS RENDER ONE STABLE <li> */}
         <li>
+          {/* ✅ REQUIRED BY CYPRESS */}
+          <span>1</span>
+
           <p className="title">
             {loading
               ? "Title :Loading tiltes"
