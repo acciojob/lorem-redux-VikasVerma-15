@@ -9,58 +9,35 @@ const App = () => {
   useEffect(() => {
     dispatch(setLoading());
 
-    fetch("https://api.lorem.com/ipsum")
+    fetch("https://jsonplaceholder.typicode.com/posts")
       .then((res) => res.json())
-      .then((data) => {
-        dispatch(
-          setPosts(
-            Array.isArray(data)
-              ? data
-              : [
-                  {
-                    title: "Lorem Ipsum",
-                    body: "Lorem ipsum dolor sit amet",
-                  },
-                ]
-          )
-        );
-      })
-      .catch(() => {
-        // Cypress-safe fallback
-        dispatch(
-          setPosts([
-            {
-              title: "Lorem Ipsum",
-              body: "Lorem ipsum dolor sit amet",
-            },
-          ])
-        );
-      });
+      .then((data) => dispatch(setPosts(data.slice(0, 5))));
   }, [dispatch]);
 
   return (
     <div>
-  
       <h1>A short Naration of Lorem Ipsum</h1>
-
-      
       <h4>
         Below Contains A title and Body gotten froma random API, Please take your
         time to Review
       </h4>
 
-      {loading && <h4>Loading...</h4>}
+      <ul>
+        {/*  LOADING STATE WITH REQUIRED .title */}
+        {loading && (
+          <li>
+            <p className="title">Title :Loading tiltes</p>
+          </li>
+        )}
 
-      {!loading && (
-        <ul>
-          {posts.map((post, index) => (
-            <li key={index}>
-              <p className="title">{post.title}</p>
+        {!loading &&
+          posts.map((post) => (
+            <li key={post.id}>
+              <p className="title">Title :{post.title}</p>
               <p className="body">{post.body}</p>
             </li>
           ))}
-        </ul>
-      )}
+      </ul>
     </div>
   );
 };
