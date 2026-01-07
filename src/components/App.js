@@ -24,8 +24,8 @@ const App = () => {
 
       <ul>
         <li>
-          {/* ✅ REQUIRED BY CYPRESS */}
-          <span>1</span>
+        
+          1
 
           <p className="title">
             {loading
