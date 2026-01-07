@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setPosts } from "../redux/loremSlice";
-const One = "1";
+// const One = "1";
 const App = () => {
   const dispatch = useDispatch();
   const { loading, posts } = useSelector((state) => state.lorem);
@@ -24,7 +24,8 @@ const App = () => {
 
       <ul>
        <li>
-           <One>1</One>
+           // <One>1</One>
+           {!loading && 1}
     <p className="title">
       {loading
         ? "Title :Loading tiltes"
