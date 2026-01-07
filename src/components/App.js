@@ -23,22 +23,19 @@ const App = () => {
       </h4>
 
       <ul>
-        <li>
-        
-          1
+       <li>1
+    <p className="title">
+      {loading
+        ? "Title :Loading tiltes"
+        : `Title :${posts[0]?.title}`}
+    </p>
 
-          <p className="title">
-            {loading
-              ? "Title :Loading tiltes"
-              : `Title :${posts[0]?.title}`}
-          </p>
-
-          <p className="body">
-            {loading
-              ? "Body :Loading Body"
-              : `Body :${posts[0]?.body}`}
-          </p>
-        </li>
+    <p className="body">
+      {loading
+        ? "Body :Loading Body"
+        : `Body :${posts[0]?.body}`}
+    </p>
+  </li>
       </ul>
     </div>
   );
