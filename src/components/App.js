@@ -40,13 +40,17 @@ const App = () => {
 
   return (
     <div>
-      {/* ✅ FIRST HEADING (INTRO TEXT) */}
-      <h4>Lorem Redux</h4>
+   
+      <h1>Lorem Redux</h1>
 
-      {/* ✅ SECOND HEADING (LOADING / CONTENT HEADER) */}
-      {loading ? <h4>Loading...</h4> : <h4>Posts</h4>}
+     
+      <h4>
+        Below Contains A title and Body gotten froma random API, Please take your
+        time to Review
+      </h4>
 
-      {/* ✅ POSTS IN ul > li */}
+      {loading && <h4>Loading...</h4>}
+
       {!loading && (
         <ul>
           {posts.map((post, index) => (
@@ -62,3 +66,4 @@ const App = () => {
 };
 
 export default App;
+
