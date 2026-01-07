@@ -3,19 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 const loremSlice = createSlice({
   name: "lorem",
   initialState: {
-    loading: false,
-    data: null
+    loading: true,
+    posts: [],
   },
   reducers: {
-    startLoading: (state) => {
+    setLoading: (state) => {
       state.loading = true;
     },
-    setLoremData: (state, action) => {
+    setPosts: (state, action) => {
       state.loading = false;
-      state.data = action.payload;
-    }
-  }
+      state.posts = action.payload;
+    },
+  },
 });
 
-export const { startLoading, setLoremData } = loremSlice.actions;
+export const { setLoading, setPosts } = loremSlice.actions;
 export default loremSlice.reducer;
