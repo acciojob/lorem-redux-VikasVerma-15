@@ -16,6 +16,7 @@ const App = () => {
 
   return (
     <div>
+      {/*  INTRO TEXT */}
       <h1>A short Naration of Lorem Ipsum</h1>
       <h4>
         Below Contains A title and Body gotten froma random API, Please take your
@@ -23,20 +24,18 @@ const App = () => {
       </h4>
 
       <ul>
-        {/*  LOADING STATE WITH REQUIRED .title */}
-        {loading && (
-          <li>
-            <p className="title">Title :Loading tiltes</p>
-          </li>
-        )}
+        {/*  ALWAYS RENDER ONE STABLE <li> */}
+        <li>
+          <p className="title">
+            {loading
+              ? "Title :Loading tiltes"
+              : `Title :${posts[0]?.title}`}
+          </p>
 
-        {!loading &&
-          posts.map((post) => (
-            <li key={post.id}>
-              <p className="title">Title :{post.title}</p>
-              <p className="body">{post.body}</p>
-            </li>
-          ))}
+          <p className="body">
+            {loading ? "Loading body" : posts[0]?.body}
+          </p>
+        </li>
       </ul>
     </div>
   );
