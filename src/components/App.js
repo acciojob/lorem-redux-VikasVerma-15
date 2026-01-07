@@ -24,7 +24,6 @@ const App = () => {
 
       <ul>
        <li>
-           // <One>1</One>
            {!loading && 1}
     <p className="title">
       {loading
