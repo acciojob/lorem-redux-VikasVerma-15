@@ -1,41 +1,38 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading, setPosts } from "../redux/loremSlice";
+import { fetchLorem } from "../redux/loremSlice";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { loading, posts } = useSelector((state) => state.lorem);
+
+  const { loading, data } = useSelector((state) => state.lorem);
+  const post = data && data[0] ? data[0] : {};
 
   useEffect(() => {
-    dispatch(setLoading());
-
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.json())
-      .then((data) => dispatch(setPosts(data.slice(0, 5))));
+    dispatch(fetchLorem());
   }, [dispatch]);
 
   return (
     <div>
-      {/*  INTRO TEXT */}
-      <h1>A short Naration of Lorem Ipsum</h1>
-      <h4>
-        Below Contains A title and Body gotten froma random API, Please take your
-        time to Review
-      </h4>
+      {/* FIRST HEADING */}
+      <h1>Lorem Redux</h1>
+
+      {/* SECOND HEADING */}
+      <h4>A short Naration of Lorem Ipsum</h4>
 
       <ul>
-        {/*  ALWAYS RENDER ONE STABLE <li> */}
         <li>
           <p className="title">
             {loading
-              ? "Title :Loading tiltes"
-              : `Title :${posts[0]?.title}`}
+              ? "Title :Loading titles"
+              : `Title :${post.title}`}
           </p>
 
-         <p className="body">
-  {loading ? "Body :Loading Body" : `Body :${post.body}`}
-</p>
-
+          <p className="body">
+            {loading
+              ? "Body :Loading Body"
+              : `Body :${post.body}`}
+          </p>
         </li>
       </ul>
     </div>
