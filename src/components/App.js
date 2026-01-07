@@ -26,7 +26,7 @@ const App = () => {
         );
       })
       .catch(() => {
-        // ✅ Cypress-safe fallback
+        // Cypress-safe fallback
         dispatch(
           setPosts([
             {
@@ -40,10 +40,10 @@ const App = () => {
 
   return (
     <div>
-   
-      <h1>Lorem Redux</h1>
+  
+      <h1>A short Naration of Lorem Ipsum</h1>
 
-     
+      
       <h4>
         Below Contains A title and Body gotten froma random API, Please take your
         time to Review
@@ -55,8 +55,8 @@ const App = () => {
         <ul>
           {posts.map((post, index) => (
             <li key={index}>
-              <p>{post.title}</p>
-              <p>{post.body}</p>
+              <p className="title">{post.title}</p>
+              <p className="body">{post.body}</p>
             </li>
           ))}
         </ul>
@@ -66,4 +66,3 @@ const App = () => {
 };
 
 export default App;
-
