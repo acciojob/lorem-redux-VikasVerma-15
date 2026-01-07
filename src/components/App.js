@@ -23,7 +23,8 @@ const App = () => {
       </h4>
 
       <ul>
-       <li>1
+       <li>
+           <One>1</One>
     <p className="title">
       {loading
         ? "Title :Loading tiltes"
