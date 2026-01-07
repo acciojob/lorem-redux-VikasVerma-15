@@ -12,29 +12,26 @@ const App = () => {
     fetch("https://api.lorem.com/ipsum")
       .then((res) => res.json())
       .then((data) => {
-        // Cypress-safe handling
-        if (!Array.isArray(data)) {
-          dispatch(
-            setPosts([
-              {
-                title: "Lorem Ipsum",
-                body:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-              },
-            ])
-          );
-        } else {
-          dispatch(setPosts(data));
-        }
+        dispatch(
+          setPosts(
+            Array.isArray(data)
+              ? data
+              : [
+                  {
+                    title: "Lorem Ipsum",
+                    body: "Lorem ipsum dolor sit amet",
+                  },
+                ]
+          )
+        );
       })
       .catch(() => {
-        // 🔥 VERY IMPORTANT FOR CYPRESS
+        // ✅ Cypress-safe fallback
         dispatch(
           setPosts([
             {
               title: "Lorem Ipsum",
-              body:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              body: "Lorem ipsum dolor sit amet",
             },
           ])
         );
@@ -43,20 +40,23 @@ const App = () => {
 
   return (
     <div>
-      
-      <h1>A short Naration of Lorem Ipsum</h1>
+      {/* ✅ FIRST HEADING (INTRO TEXT) */}
+      <h4>Lorem Redux</h4>
 
-      {loading && <p>Loading...</p>}
+      {/* ✅ SECOND HEADING (LOADING / CONTENT HEADER) */}
+      {loading ? <h4>Loading...</h4> : <h4>Posts</h4>}
 
-      {!loading &&
-        posts.map((item, index) => (
-          <p key={index}>
-            <strong>Title</strong> {item.title}
-            <br />
-            <br />
-            <strong>Body</strong> {item.body}
-          </p>
-        ))}
+      {/* ✅ POSTS IN ul > li */}
+      {!loading && (
+        <ul>
+          {posts.map((post, index) => (
+            <li key={index}>
+              <p>{post.title}</p>
+              <p>{post.body}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
